@@ -3,34 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario Académico</title>
+    <title>Formulario de Evaluación</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #333; /* Fondo oscuro */
-            color: white; /* Texto blanco */
             margin: 20px;
+            background-color: #ffffff; /* Fondo blanco */
+        }
+        h2, h3 {
+            color: #0056b3;
         }
         table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
         }
+        th {
+            background-color: #DCF3FC; /* Encabezado con color #DCF3FC */
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
         td {
+            background-color: #ffffff; /* Fondo blanco para las celdas */
+            border: 1px solid #ccc;
             padding: 10px;
         }
-        input[type="text"], select, input[type="date"] {
-            width: 100%;
-            padding: 5px;
-            box-sizing: border-box;
+        input[type="number"] {
+            width: 60px;
+        }
+        .ns-nr {
+            text-align: center;
+            width: 100px;
+        }
+        .porcentaje-column {
+            text-align: center;
+            width: 120px;
+        }
+        .button-container {
+            text-align: center;
+        }
+        button {
+            background-color: #0056b3;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #003d80;
+        }
+
+        /* Estilos para el cuadro de texto con borde doble */
+        .instruction-box {
+            border: 5px double #000;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .instruction-box b {
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-<h2>Formulario de Información Académica</h2>
-
-<form>
+    <h2>Formulario de Evaluación</h2>
+	<h2>EVALUACIÓN DE LA DOCENCIA DEL PROFESOR QUE NO SEA DE CARRERA</h2>
+	
+	<form>
     <table>
         <tr>
             <td>Programa académico</td>
@@ -72,10 +118,82 @@
         </tr>
         
     </table>
-
-    <!-- Botón de envío -->
-    <input type="submit" value="Enviar">
 </form>
+	
+	
+    <div class="instruction-box">
+        En la columna "<b>PORCENTAJE</b>" asigne para cada fila un valor en la escala <b>1-100</b> según considere que ha sido el porcentaje de cumplimiento del profesor frente al enunciado.
+    </div>
 
+
+    <form id="evaluation-form">
+        
+        <table>
+            <tr>
+                <th>Criterio</th>
+                <th class="porcentaje-column">Porcentaje</th>
+                <th class="ns-nr">NA</th>
+            </tr>
+            <tr>
+                <td>1. Asiste a las reuniones convocadas y aporta al fortalecimiento del grupo profesoral.</td>
+                <td class="porcentaje-column"><input type="number" min="1" max="100" name="q1-porcentaje"></td>
+                <td class="ns-nr"><input type="checkbox" name="q1-nsnr"></td>
+            </tr>
+            <tr>
+                <td>2. Aporta al mejoramiento del contenido curricular del programa de la asignatura .</td>
+                <td class="porcentaje-column"><input type="number" min="1" max="100" name="q2-porcentaje"></td>
+                <td class="ns-nr"><input type="checkbox" name="q2-nsnr"></td>
+            </tr>
+            <tr>
+                <td>3. Da a conocer oportunamente a los estudiantes el programa de la asignatura, la metodología y las estrategias didácticas y de evaluación del curso. </td>
+                <td class="porcentaje-column"><input type="number" min="1" max="100" name="q3-porcentaje"></td>
+                <td class="ns-nr"><input type="checkbox" name="q3-nsnr"></td>
+            </tr>
+            <tr>
+                <td>4. Actualiza e implementa recursos didácticos y TIC para la docencia.</td>
+                <td class="porcentaje-column"><input type="number" min="1" max="100" name="q4-porcentaje"></td>
+                <td class="ns-nr"><input type="checkbox" name="q4-nsnr"></td>
+            </tr>
+            <tr>
+                <td>5. Es puntual y está disponible para la atención a los estudiantes.</td>
+                <td class="porcentaje-column"><input type="number" min="1" max="100" name="q5-porcentaje"></td>
+                <td class="ns-nr"><input type="checkbox" name="q5-nsnr"></td>
+            </tr>
+            <tr>
+                <td>6. Es puntual en la entrega, retroalimentación y reporte oportuno de los resultados de las evaluaciones del curso.</td>
+                <td class="porcentaje-column"><input type="number" min="1" max="100" name="q6-porcentaje"></td>
+                <td class="ns-nr"><input type="checkbox" name="q6-nsnr"></td>
+            </tr>
+            <tr>
+                <td>7. Es respetuoso con los estudiantes y colegas.</td>
+                <td class="porcentaje-column"><input type="number" min="1" max="100" name="q7-porcentaje"></td>
+                <td class="ns-nr"><input type="checkbox" name="q7-nsnr"></td>
+            </tr>
+        </table>
+		
+		<table>
+            <tr>
+                <th>Sugerencias y recomendaciones</th>
+                </tr>
+            <tr>
+                <td contenteditable="true"></td>
+                
+            </tr>
+            
+        </table>
+
+        <div class="button-container">
+            <button type="submit">Enviar Evaluación</button>
+        </div>
+    </form>
+
+    <script>
+        // Lógica para procesar el formulario (opcional)
+        document.getElementById('evaluation-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Formulario enviado con éxito.');
+            // Aquí puedes agregar lógica para enviar los datos a un servidor o procesarlos como quieras.
+        });
+    </script>
 </body>
 </html>
