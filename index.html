@@ -79,11 +79,17 @@
 	<form>
     <table>
         <tr>
-            <td>Programa académico</td>
-            <td colspan="3"><select id="programa" name="programa">
-                <option value="LicenciaturaMatemáticas">Licenciatura en Matemáticas</option>
-                <option value="ingenieriaCivil">Ingeniería Civil</option>
-            </select></td>
+            <td>Unidad académica</td>
+	    <td colspan="3">
+	        <select id="programa" name="programa">
+	            <option value="FacultadCiencias">Facultad de Ciencias</option>
+	            <option value="FacultadCienciasHumanas">Facultad de Ciencias Humanas</option>
+	            <option value="FacultadIngenieriasFisicoquimicas">Facultad de Ingenierías Fisicoquímicas</option>
+	            <option value="FacultadIngenieriasFisicomecanicas">Facultad de Ingenierías Fisicomecánicas</option>
+	            <option value="FacultadSalud">Facultad de Salud</option>
+	            <option value="IPRED">IPRED</option>
+	        </select>
+	    </td>
         </tr>
         <tr>
             <td>Nombre del curso:</td>
@@ -135,39 +141,40 @@
                 <th class="ns-nr">NA</th>
             </tr>
             <tr>
-                <td>1. Asiste a las reuniones convocadas y aporta al fortalecimiento del grupo profesoral.</td>
-                <td class="porcentaje-column"><input type="number" min="1" max="100" name="q1-porcentaje"></td>
-                <td class="ns-nr"><input type="checkbox" name="q1-nsnr"></td>
+                <td>1. Da a conocer oportunamente a los estudiantes el programa de la asignatura, la metodología y las estrategias didácticas y de evaluación del curso. </td>
+                <td class="porcentaje-column"><input type="number" min="1" max="100" name="q3-porcentaje"></td>
+                <td class="ns-nr"><input type="checkbox" name="q3-nsnr"></td>
             </tr>
             <tr>
                 <td>2. Aporta al mejoramiento del contenido curricular del programa de la asignatura .</td>
                 <td class="porcentaje-column"><input type="number" min="1" max="100" name="q2-porcentaje"></td>
                 <td class="ns-nr"><input type="checkbox" name="q2-nsnr"></td>
             </tr>
+            
             <tr>
-                <td>3. Da a conocer oportunamente a los estudiantes el programa de la asignatura, la metodología y las estrategias didácticas y de evaluación del curso. </td>
-                <td class="porcentaje-column"><input type="number" min="1" max="100" name="q3-porcentaje"></td>
-                <td class="ns-nr"><input type="checkbox" name="q3-nsnr"></td>
-            </tr>
-            <tr>
-                <td>4. Actualiza e implementa recursos didácticos y TIC para la docencia.</td>
+                <td>3. Actualiza e implementa recursos didácticos y TIC para la docencia.</td>
                 <td class="porcentaje-column"><input type="number" min="1" max="100" name="q4-porcentaje"></td>
                 <td class="ns-nr"><input type="checkbox" name="q4-nsnr"></td>
             </tr>
             <tr>
-                <td>5. Es puntual y está disponible para la atención a los estudiantes.</td>
+                <td>4. Es puntual y está disponible para la atención a los estudiantes.</td>
                 <td class="porcentaje-column"><input type="number" min="1" max="100" name="q5-porcentaje"></td>
                 <td class="ns-nr"><input type="checkbox" name="q5-nsnr"></td>
             </tr>
             <tr>
-                <td>6. Es puntual en la entrega, retroalimentación y reporte oportuno de los resultados de las evaluaciones del curso.</td>
+                <td>5. Es puntual en la entrega, retroalimentación y reporte oportuno de los resultados de las evaluaciones del curso.</td>
                 <td class="porcentaje-column"><input type="number" min="1" max="100" name="q6-porcentaje"></td>
                 <td class="ns-nr"><input type="checkbox" name="q6-nsnr"></td>
             </tr>
             <tr>
-                <td>7. Es respetuoso con los estudiantes y colegas.</td>
+                <td>6. Es respetuoso con los estudiantes y colegas.</td>
                 <td class="porcentaje-column"><input type="number" min="1" max="100" name="q7-porcentaje"></td>
                 <td class="ns-nr"><input type="checkbox" name="q7-nsnr"></td>
+            </tr>
+		<tr>
+                <td>7. Asiste a las reuniones convocadas y aporta al fortalecimiento del grupo profesoral.</td>
+                <td class="porcentaje-column"><input type="number" min="1" max="100" name="q1-porcentaje"></td>
+                <td class="ns-nr"><input type="checkbox" name="q1-nsnr"></td>
             </tr>
         </table>
 		
@@ -176,9 +183,8 @@
                 <th>Sugerencias y recomendaciones</th>
                 </tr>
             <tr>
-                <td contenteditable="true"></td>
-                
-            </tr>
+       			 <td contenteditable="true" oninput="limitCharacters(this, 200)"></td>
+   		</tr>
             
         </table>
 
@@ -188,12 +194,18 @@
     </form>
 
     <script>
-        // Lógica para procesar el formulario (opcional)
+        
         document.getElementById('evaluation-form').addEventListener('submit', function(event) {
             event.preventDefault();
             alert('Formulario enviado con éxito.');
-            // Aquí puedes agregar lógica para enviar los datos a un servidor o procesarlos como quieras.
+            
         });
+	    function limitCharacters(element, maxLength) {
+    if (element.innerText.length > maxLength) {
+        element.innerText = element.innerText.substring(0, maxLength);
+        alert("Se ha alcanzado el límite de " + maxLength + " caracteres.");
+    						}
+							}
     </script>
 </body>
 </html>
